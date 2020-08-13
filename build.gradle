@@ -1,8 +1,10 @@
 plugins {
     id 'scala'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
 
 apply plugin: 'scala'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'com.pogorelovs.spark'
 version '1.0-SNAPSHOT'
@@ -11,7 +13,15 @@ repositories {
     mavenCentral()
 }
 
+def mainClass = 'com.pogorelovs.spark.ClicksAndViewsAggregation'
+
 dependencies {
     compile group: 'org.apache.spark', name: 'spark-sql_2.12', version: '2.4.6'
     compile group: 'org.scala-lang', name: 'scala-library', version: '2.12.12'
+}
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': mainClass
+    }
 }
