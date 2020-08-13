@@ -4,7 +4,7 @@ plugins {
 
 apply plugin: 'scala'
 
-group 'org.example'
+group 'com.pogorelovs.spark'
 version '1.0-SNAPSHOT'
 
 repositories {
